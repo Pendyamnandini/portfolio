@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nandini Pendyam — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1F2A;
+    --paper:#F7F3EC;
+    --teal:#2F6F6E;
+    --coral:#E8A87C;
+    --slate:#6B7280;
+    --offwhite:#FBFAF7;
+    --line: rgba(255,255,255,0.10);
+    --line-dark: rgba(27,31,42,0.12);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{
+    background:var(--ink);
+    color:var(--offwhite);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+  }
+
+  .wrap{ max-width:980px; margin:0 auto; padding:0 32px; }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding:90px 0 70px;
+    position:relative;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--coral);
+    margin-bottom:18px;
+  }
+
+  h1.name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(48px, 8vw, 84px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+
+  .role{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(20px, 3vw, 28px);
+    color:var(--coral);
+    margin-top:10px;
+  }
+
+  .location{
+    font-size:14px;
+    color:rgba(251,250,247,0.55);
+    margin-top:18px;
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  /* Hero ledger panel */
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap:48px;
+    margin-top:60px;
+    align-items:start;
+  }
+
+  .lede{
+    font-size:18px;
+    color:rgba(251,250,247,0.78);
+    max-width:46ch;
+  }
+
+  .ledger{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:14px;
+    padding:28px 28px 22px;
+    position:relative;
+  }
+
+  .ledger::before{
+    content:"";
+    position:absolute;
+    left:22px; top:0; bottom:0;
+    width:1px;
+    background:rgba(27,31,42,0.10);
+  }
+
+  .ledger-title{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:16px;
+    padding-left:18px;
+  }
+
+  .ledger-entry{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-size:14px;
+    padding:9px 0 9px 18px;
+    border-bottom:1px solid rgba(27,31,42,0.08);
+  }
+  .ledger-entry:last-child{ border-bottom:none; }
+
+  .ledger-entry .k{ color:rgba(27,31,42,0.55); }
+  .ledger-entry .v{ font-weight:500; text-align:right; }
+
+  /* ---------- MARGIN NOTE SIGNATURE ---------- */
+  .margin-note{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    margin:0 0 28px;
+  }
+
+  .margin-note .mark{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--coral);
+    white-space:nowrap;
+    padding-top:2px;
+  }
+
+  .margin-note .mark svg{
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:6px;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding:64px 0;
+    border-top:1px solid var(--line);
+  }
+
+  h2.section-title{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:32px;
+    margin-bottom:36px;
+  }
+
+  /* About */
+  .about-text{
+    font-size:17px;
+    color:rgba(251,250,247,0.78);
+    max-width:62ch;
+  }
+  .about-text strong{
+    color:var(--offwhite);
+    font-weight:500;
+  }
+
+  /* Skills */
+  .skills-list{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+
+  .skill-row{
+    display:grid;
+    grid-template-columns: 36px 1fr auto;
+    align-items:center;
+    gap:18px;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .skill-row:first-child{ border-top:1px solid var(--line); }
+
+  .skill-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--coral);
+  }
+
+  .skill-name{
+    font-size:18px;
+    font-weight:500;
+  }
+
+  .skill-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--teal);
+    background:rgba(47,111,110,0.18);
+    padding:6px 12px;
+    border-radius:6px;
+    white-space:nowrap;
+  }
+
+  /* Experience & Education shared "entry" look */
+  .entry-list{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+
+  .entry{
+    display:grid;
+    grid-template-columns: 160px 1fr;
+    gap:24px;
+  }
+
+  .entry-period{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:rgba(251,250,247,0.45);
+    padding-top:3px;
+  }
+
+  .entry-body h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:21px;
+    margin-bottom:4px;
+  }
+
+  .entry-body .sub{
+    font-size:14px;
+    color:var(--coral);
+    margin-bottom:8px;
+  }
+
+  .entry-body p{
+    font-size:15px;
+    color:rgba(251,250,247,0.65);
+    max-width:50ch;
+  }
+
+  /* Stack grids (languages / frameworks) */
+  .stack-grids{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:32px;
+    margin-top:40px;
+  }
+
+  .stack-title{
+    padding-left:0;
+    color:var(--coral);
+  }
+
+  .chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .chip{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    padding:8px 14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    color:rgba(251,250,247,0.85);
+  }
+
+  /* Project GitHub link */
+  .project-link{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    margin-top:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.04em;
+    color:var(--teal);
+    text-decoration:none;
+    border:1px solid rgba(47,111,110,0.35);
+    padding:6px 12px;
+    border-radius:6px;
+    transition:background 0.15s, color 0.15s;
+  }
+  .project-link:hover{
+    background:rgba(47,111,110,0.18);
+    color:var(--offwhite);
+  }
+
+  /* Entry bullet lists */
+  .entry-bullets{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+  }
+  .entry-bullets li{
+    font-size:15px;
+    color:rgba(251,250,247,0.65);
+    padding-left:14px;
+    position:relative;
+  }
+  .entry-bullets li::before{
+    content:"–";
+    position:absolute;
+    left:0;
+    color:var(--coral);
+  }
+
+  /* Certifications list */
+  .cert-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:14px;
+    padding:24px 26px;
+    display:flex;
+    align-items:flex-start;
+    gap:18px;
+  }
+
+  .cert-icon{
+    width:40px; height:40px;
+    border-radius:50%;
+    background:var(--ink);
+    color:var(--coral);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:16px;
+    flex-shrink:0;
+  }
+
+  .cert-card h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:18px;
+    margin-bottom:4px;
+  }
+  .cert-card p{
+    font-size:13px;
+    color:rgba(27,31,42,0.6);
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  /* Contact / footer */
+  footer{
+    padding:80px 0 64px;
+    border-top:1px solid var(--line);
+  }
+
+  h2.contact-title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(38px, 6vw, 56px);
+    margin-bottom:32px;
+    max-width:14ch;
+  }
+
+  .contact-links{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .contact-links a{
+    color:var(--offwhite);
+    text-decoration:none;
+    font-size:18px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.15s, color 0.15s;
+    width:fit-content;
+  }
+  .contact-links a:hover{
+    color:var(--coral);
+    border-color:var(--coral);
+  }
+
+  .foot-note{
+    margin-top:48px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:rgba(251,250,247,0.35);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:760px){
+    .wrap{ padding:0 22px; }
+    header.hero{ padding:60px 0 48px; }
+    .hero-grid{ grid-template-columns:1fr; gap:32px; }
+    .entry{ grid-template-columns:1fr; gap:6px; }
+    .skill-row{ grid-template-columns:28px 1fr; row-gap:8px; }
+    .skill-tag{ grid-column:2; }
+    .stack-grids{ grid-template-columns:1fr; gap:24px; }
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    section, header.hero, footer{
+      animation:fadeUp 0.6s ease-out both;
+    }
+    @keyframes fadeUp{
+      from{ opacity:0; transform:translateY(14px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Hyderabad, India — AI/ML Engineer · Full-Stack Developer</div>
+    <h1 class="name">Nandini<br>Pendyam</h1>
+    <p class="role">AI &amp; ML engineer building full-stack systems that work in the real world</p>
+    <p class="location">B.Tech AI &amp; ML · Malla Reddy Engineering College for Women · Expected 2027 · 92%</p>
+
+    <div class="hero-grid">
+      <p class="lede">
+        Final-year B.Tech student with full-stack experience across
+        <strong>Java, Spring Boot, Python, Flask, and React</strong>. Built
+        internship and independent projects covering REST API development,
+        JWT authentication, real-time analytics, and cybersecurity threat
+        detection. NPTEL-certified in Data Structures &amp; Algorithms.
+        Seeking Software Engineering or Full-Stack Development roles.
+      </p>
+
+      <div class="ledger">
+        <div class="ledger-title">Field notes</div>
+        <div class="ledger-entry"><span class="k">Status</span><span class="v">Final-year B.Tech</span></div>
+        <div class="ledger-entry"><span class="k">GPA</span><span class="v">92%</span></div>
+        <div class="ledger-entry"><span class="k">Based in</span><span class="v">Hyderabad, India</span></div>
+        <div class="ledger-entry"><span class="k">Languages</span><span class="v">Telugu · Hindi · English</span></div>
+        <div class="ledger-entry"><span class="k">GitHub</span><span class="v"><a href="https://github.com/Pendyamnandini" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;">Pendyamnandini</a></span></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="margin-note">
+      <span class="mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>about</span>
+    </div>
+    <h2 class="section-title">What I build</h2>
+    <p class="about-text">
+      I'm a final-year AI &amp; ML student who builds things end-to-end —
+      from <strong>Spring Boot backends with JWT auth and JPA/Hibernate</strong>
+      to <strong>React frontends with real-time analytics charts</strong>.
+      My internship projects have covered carbon footprint tracking,
+      cybersecurity threat detection, and personal-safety alerting systems.
+      I'm also a published researcher — my work on a
+      <strong>Vision-Driven Gesture Language Processing System</strong>
+      was presented at ICISDT 2026 at SRM Institute of Science &amp; Technology.
+    </p>
+  </section>
+
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="entry-list">
+
+      <div class="entry">
+        <div class="entry-period">Jun 2026 – Aug 2026</div>
+        <div class="entry-body">
+          <h3>Infosys Springboard</h3>
+          <p class="sub">Java Full Stack Developer Intern · CarbonTracker</p>
+          <ul class="entry-bullets">
+            <li>Built a full-stack carbon footprint tracker using Java 21, Spring Boot 3.3.1, Spring Security, and Spring Data JPA/Hibernate on the backend with a React + Material-UI frontend.</li>
+            <li>Implemented JWT-based authentication and OTP password recovery via Gmail SMTP.</li>
+            <li>Built category-wise emissions analytics with Recharts visualizations (daily, weekly, monthly) and PDF report export.</li>
+            <li>Designed an automated email notification system for goal alerts and an admin support-ticket dashboard with real-time audit logging (Flyway migrations, H2 file-mode storage).</li>
+          </ul>
+          <a href="https://github.com/Pendyamnandini/Carbon-Foot-Tracker" target="_blank" rel="noopener" class="project-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-period">Mar 2026 – Apr 2026</div>
+        <div class="entry-body">
+          <h3>Cyber Solutions &amp; Information Board (CSIB)</h3>
+          <p class="sub">Cybersecurity Intern · BrandShield</p>
+          <ul class="entry-bullets">
+            <li>Built a platform to detect brand impersonation via typosquatting and phishing pattern analysis.</li>
+            <li>Developed a domain variation generator using character substitution, keyboard-adjacency, and suspicious-TLD techniques.</li>
+            <li>Implemented a domain similarity scoring engine (Levenshtein Distance) with WHOIS/DNS lookups; classified threats (Low/Medium/High/Critical) with PDF report generation and admin dashboard.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-period">Feb 2026 – Mar 2026</div>
+        <div class="entry-body">
+          <h3>ServiceNow — SmartBridge</h3>
+          <p class="sub">Platform Intern</p>
+          <ul class="entry-bullets">
+            <li>Completed a training internship on the ServiceNow enterprise platform, covering IT service management workflows.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-period">Dec 2025 – Jan 2026</div>
+        <div class="entry-body">
+          <h3>IBM SkillsBuild Applied AI</h3>
+          <p class="sub">Internship via CSRBOX / AICTE</p>
+          <ul class="entry-bullets">
+            <li>Completed a structured Applied AI program covering core AI concepts and prompt engineering on the Realy.app platform.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="entry-list">
+      <div class="entry">
+        <div class="entry-period">Expected 2027</div>
+        <div class="entry-body">
+          <h3>Malla Reddy Engineering College for Women</h3>
+          <p class="sub">B.Tech — Artificial Intelligence &amp; Machine Learning · 92%</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-period">2023</div>
+        <div class="entry-body">
+          <h3>Narayana Junior College, Hyderabad</h3>
+          <p class="sub">Intermediate (Class XII) · 98.3%</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-period">2021</div>
+        <div class="entry-body">
+          <h3>Krishnaveni Talent School</h3>
+          <p class="sub">Class X · 100%</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="margin-note">
+      <span class="mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>builds</span>
+    </div>
+    <h2 class="section-title">Projects</h2>
+    <div class="entry-list">
+
+      <div class="entry">
+        <div class="entry-period">01</div>
+        <div class="entry-body">
+          <h3>SilentSOS</h3>
+          <p class="sub">React 18 / Vite · Python Flask · Multimodal safety platform</p>
+          <ul class="entry-bullets">
+            <li>Real-time voice distress detection using Web Audio API (RMS-based decibel analysis) and Web Speech API keyword recognition.</li>
+            <li>Typing-pattern (keystroke dynamics) distress predictor and a combined multimodal risk-scoring engine across 5 REST endpoints.</li>
+            <li>Live GPS geolocation (IP-based fallback) with automated Gmail SMTP emergency alert emails containing Google Maps links.</li>
+          </ul>
+          <a href="https://github.com/Pendyamnandini/Silent_SOS" target="_blank" rel="noopener" class="project-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-period">02</div>
+        <div class="entry-body">
+          <h3>Multi-disease predictor</h3>
+          <p class="sub">Django · ML models</p>
+          <ul class="entry-bullets">
+            <li>Django web app predicting diabetes, heart attack, and breast cancer from patient inputs using trained ML models with an HTML/CSS interface.</li>
+          </ul>
+          <a href="https://github.com/Pendyamnandini/django_based_project" target="_blank" rel="noopener" class="project-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-period">03</div>
+        <div class="entry-body">
+          <h3>Bookstore management system</h3>
+          <p class="sub">Django</p>
+          <ul class="entry-bullets">
+            <li>Full management application for bookstore inventory, orders, and records with structured admin and user interfaces.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-period">04</div>
+        <div class="entry-body">
+          <h3>Hospital management system</h3>
+          <p class="sub">Patient triage &amp; ward allocation</p>
+          <ul class="entry-bullets">
+            <li>Recommends emergency, general, or mental health ward placement based on patient symptoms and condition inputs.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Technical skills</h2>
+
+    <div class="stack-grids" style="grid-template-columns:1fr 1fr 1fr; margin-top:0;">
+      <div class="stack-block">
+        <div class="ledger-title stack-title">Languages</div>
+        <div class="chip-row">
+          <span class="chip">Java</span>
+          <span class="chip">Python</span>
+          <span class="chip">C</span>
+          <span class="chip">JavaScript</span>
+        </div>
+      </div>
+      <div class="stack-block">
+        <div class="ledger-title stack-title">Backend &amp; frameworks</div>
+        <div class="chip-row">
+          <span class="chip">Spring Boot</span>
+          <span class="chip">Spring Security</span>
+          <span class="chip">Spring Data JPA</span>
+          <span class="chip">Hibernate</span>
+          <span class="chip">Flask</span>
+          <span class="chip">Django</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">Node JS</span>
+          <span class="chip">Angular JS</span>
+        </div>
+      </div>
+      <div class="stack-block">
+        <div class="ledger-title stack-title">Frontend</div>
+        <div class="chip-row">
+          <span class="chip">React</span>
+          <span class="chip">Material-UI</span>
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">Recharts</span>
+          <span class="chip">Axios</span>
+        </div>
+      </div>
+      <div class="stack-block" style="margin-top:24px;">
+        <div class="ledger-title stack-title">Databases</div>
+        <div class="chip-row">
+          <span class="chip">MySQL</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">H2</span>
+        </div>
+      </div>
+      <div class="stack-block" style="margin-top:24px;">
+        <div class="ledger-title stack-title">Tools &amp; concepts</div>
+        <div class="chip-row">
+          <span class="chip">Git</span>
+          <span class="chip">GitHub</span>
+          <span class="chip">Maven</span>
+          <span class="chip">Flyway</span>
+          <span class="chip">JWT Auth</span>
+          <span class="chip">OOP</span>
+          <span class="chip">DSA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2 class="section-title">Certifications &amp; Publications</h2>
+    <div class="cert-list">
+      <div class="cert-card">
+        <div class="cert-icon">DS</div>
+        <div>
+          <h3>Data Structures &amp; Algorithms through Python</h3>
+          <p>NPTEL</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">Py</div>
+        <div>
+          <h3>Python and C programming</h3>
+          <p>Cisco</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">Py</div>
+        <div>
+          <h3>Python and C programming</h3>
+          <p>Code Tantra</p>
+        </div>
+      </div>
+      <div class="cert-card" style="border-left:3px solid var(--teal);">
+        <div class="cert-icon" style="background:var(--teal);color:var(--offwhite);">📄</div>
+        <div>
+          <h3>Vision-Driven Gesture Language Processing System</h3>
+          <p>Published · ICISDT 2026 — SRM Institute of Science &amp; Technology</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2 class="contact-title">Let's connect</h2>
+    <div class="contact-links">
+      <a href="mailto:nandu.pendyam@gmail.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+        nandu.pendyam@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/nandini-pendyam" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 0 1 8 0v8"/></svg>
+        linkedin.com/in/nandini-pendyam
+      </a>
+      <a href="https://github.com/Pendyamnandini" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        github.com/Pendyamnandini
+      </a>
+    </div>
+    <p class="foot-note">Hyderabad, Telangana, India</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
